@@ -5,7 +5,7 @@
  {
  	shared_ptr<view::Signal> signal;
 -	uint64_t *sample_rate;
-+	uint64_t *sample_rate = 0;
++	uint64_t *sample_rate = NULL;
  	unsigned int logic_probe_count = 0;
  	unsigned int analog_probe_count = 0;
  
@@ -43,3 +43,26 @@
  )
  
  add_executable(pulseview-test
+commit 4b963e7f126d2a13c4a4156fe1cfa8000c00fec0
+Author: Joel Holdsworth <joel@airwebreathe.org.uk>
+Date:   Sat Mar 9 16:52:04 2013 +0000
+
+    Ensure sr_config_get is called even when assert is compiled out
+
+diff --git a/pv/sigsession.cpp b/pv/sigsession.cpp
+index a9da7bf..8f482f6 100644
+--- a/pv/sigsession.cpp
++++ b/pv/sigsession.cpp
+@@ -195,8 +195,10 @@ void SigSession::feed_in_header(const sr_dev_inst *sdi)
+ 
+ 	// Read out the sample rate
+ 	assert(sdi->driver);
+-	assert(sr_config_get(sdi->driver, SR_CONF_SAMPLERATE,
+-		(const void**)&sample_rate, sdi) == SR_OK);
++
++	const int ret = sr_config_get(sdi->driver, SR_CONF_SAMPLERATE,
++		(const void**)&sample_rate, sdi);
++	assert(ret == SR_OK);
+ 
+ 	// Create data containers for the coming data snapshots
+ 	{
