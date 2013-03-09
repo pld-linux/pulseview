@@ -9,7 +9,8 @@ Version:	0.1
 Release:	0.%{snap}.1
 License:	GPL
 Group:		X11/Applications/Graphics
-Source0:	http://sigrok.org/gitweb/?p=pulseview.git;a=snapshot;h=%{snap};sf=tgz;/%{name}-%{snap}.tar.gz
+# Source0:	http://sigrok.org/gitweb/?p=pulseview.git;a=snapshot;h=%{snap};sf=tgz;/%{name}-%{snap}.tar.gz
+Source0:	%{name}-%{snap}.tar.gz
 # Source0-md5:	52527a78a1ee676546d63615bf1c1c8d
 Patch0:		%{name}-build.patch
 URL:		http://sigrok.org/wiki/PulseView
