@@ -1,0 +1,11 @@
+--- pulseview-a7553da/pv/sigsession.cpp~	2013-03-09 16:09:28.000000000 +0100
++++ pulseview-a7553da/pv/sigsession.cpp	2013-03-09 16:45:26.008835730 +0100
+@@ -172,7 +172,7 @@
+ void SigSession::feed_in_header(const sr_dev_inst *sdi)
+ {
+ 	shared_ptr<view::Signal> signal;
+-	uint64_t *sample_rate;
++	uint64_t *sample_rate = 0;
+ 	unsigned int logic_probe_count = 0;
+ 	unsigned int analog_probe_count = 0;
+ 
