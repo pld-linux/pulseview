@@ -9,3 +9,37 @@
  	unsigned int logic_probe_count = 0;
  	unsigned int analog_probe_count = 0;
  
+--- pulseview-a7553da/pv/view/viewport.cpp~	2013-03-09 16:09:28.000000000 +0100
++++ pulseview-a7553da/pv/view/viewport.cpp	2013-03-09 17:23:03.369361232 +0100
+@@ -104,11 +104,6 @@
+ 	}
+ }
+ 
+-void Viewport::mouseReleaseEvent(QMouseEvent *event)
+-{
+-	assert(event);
+-}
+-
+ void Viewport::wheelEvent(QWheelEvent *event)
+ {
+ 	assert(event);
+--- pulseview-a7553da/pv/view/viewport.h~	2013-03-09 16:09:28.000000000 +0100
++++ pulseview-a7553da/pv/view/viewport.h	2013-03-09 17:23:07.126116283 +0100
+@@ -48,7 +48,6 @@
+ private:
+ 	void mousePressEvent(QMouseEvent *event);
+ 	void mouseMoveEvent(QMouseEvent *event);
+-	void mouseReleaseEvent(QMouseEvent *event);
+ 	void wheelEvent(QWheelEvent *event);
+ 
+ private:
+--- pulseview-a7553da/test/CMakeLists.txt~	2013-03-09 16:09:28.000000000 +0100
++++ pulseview-a7553da/test/CMakeLists.txt	2013-03-09 17:27:36.806516037 +0100
+@@ -35,6 +35,7 @@
+ 
+ set(PULSEVIEW_LINK_LIBS
+ 	${Boost_LIBRARIES}
++	${CMAKE_THREAD_LIBS_INIT}
+ )
+ 
+ add_executable(pulseview-test

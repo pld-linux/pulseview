@@ -1,5 +1,5 @@
 #
-%bcond_with	tests
+%bcond_without	tests
 #
 %define snap	a7553da
 #
@@ -38,6 +38,8 @@ cd build
 	../
 
 %{__make}
+
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
