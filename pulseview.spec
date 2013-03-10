@@ -17,9 +17,11 @@ URL:		http://sigrok.org/wiki/PulseView
 BuildRequires:	boost-devel
 %{?with_tests:BuildRequires:	boost-test}
 BuildRequires:	boost-thread
+BuildRequires:	cmake
 BuildRequires:	glib2-devel
 BuildRequires:	libsigrok-devel >= 0.2.0
 BuildRequires:	libsigrokdecode-devel >= 0.1.0
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
