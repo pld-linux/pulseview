@@ -1,25 +1,21 @@
 #
 %bcond_without	tests
 #
-%define snap	a7553da
-#
 Summary:	Qt based logic analyzer GUI for sigrok
 Name:		pulseview
-Version:	0.1
-Release:	0.%{snap}.3
+Version:	0.1.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
-# Source0:	http://sigrok.org/gitweb/?p=pulseview.git;a=snapshot;h=%{snap};sf=tgz;/%{name}-%{snap}.tar.gz
-Source0:	%{name}-%{snap}.tar.gz
-# Source0-md5:	52527a78a1ee676546d63615bf1c1c8d
-Patch0:		%{name}-build.patch
+Source0:	http://www.sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
+# Source0-md5:	0b462664854f4186c67ce1aae78b6d06
 URL:		http://sigrok.org/wiki/PulseView
 BuildRequires:	boost-devel
 %{?with_tests:BuildRequires:	boost-test}
 BuildRequires:	boost-thread
 BuildRequires:	cmake
 BuildRequires:	glib2-devel
-BuildRequires:	libsigrok-devel >= 0.2.0
+BuildRequires:	libsigrok-devel >= 0.2.0-1
 BuildRequires:	libsigrokdecode-devel >= 0.1.0
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -28,8 +24,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Qt based logic analyzer GUI for sigrok.
 
 %prep
-%setup -q -n %{name}-%{snap}
-%patch0 -p1
+%setup -q
 
 %build
 install -d build
