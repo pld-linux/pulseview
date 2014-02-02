@@ -4,7 +4,7 @@
 Summary:	Qt based logic analyzer GUI for sigrok
 Name:		pulseview
 Version:	0.1.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://www.sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
