@@ -1,0 +1,11 @@
+--- pulseview-0.1.0/test/CMakeLists.txt~	2013-05-04 23:05:32.000000000 +0200
++++ pulseview-0.1.0/test/CMakeLists.txt	2014-02-03 11:38:35.814716407 +0100
+@@ -22,7 +22,7 @@
+ # This will set ${CMAKE_THREAD_LIBS_INIT} to the correct, OS-specific value.
+ find_package(Threads)
+ 
+-find_package(Boost 1.46 COMPONENTS unit_test_framework REQUIRED)
++find_package(Boost 1.46 COMPONENTS system unit_test_framework REQUIRED)
+ 
+ set(pulseview_TEST_SOURCES
+ 	${PROJECT_SOURCE_DIR}/pv/data/analogsnapshot.cpp
