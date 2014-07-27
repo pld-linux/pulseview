@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests	# "make test" call
+%bcond_with	tests	# "make test" call (requires functional libusb, i.e. accessible USB subsystem)
 #
 Summary:	Qt based logic analyzer GUI for sigrok
 Summary(pl.UTF-8):	Oparty na Qt graficzny interfejs analizatora logicznego dla szkieletu sigrok
