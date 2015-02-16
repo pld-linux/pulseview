@@ -6,7 +6,7 @@ Summary:	Qt based logic analyzer GUI for sigrok
 Summary(pl.UTF-8):	Oparty na Qt graficzny interfejs analizatora logicznego dla szkieletu sigrok
 Name:		pulseview
 Version:	0.2.0
-Release:	3
+Release:	4
 License:	GPL v3+
 Group:		X11/Applications/Graphics
 Source0:	http://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
