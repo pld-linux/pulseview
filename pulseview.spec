@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_with	qt4	# use Qt 4 instead of Qt 5
 %bcond_with	tests	# "make test" call (requires functional libusb, i.e. accessible USB subsystem)
 #
 Summary:	Qt based logic analyzer GUI for sigrok
@@ -12,18 +13,30 @@ Group:		X11/Applications/Graphics
 Source0:	http://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
 # Source0-md5:	2cd76988cbf2a74b383e30de27744016
 URL:		http://sigrok.org/wiki/PulseView
-BuildRequires:	QtCore-devel >= 4
-BuildRequires:	QtGui-devel >= 4
-BuildRequires:	boost-devel >= 1.42
-%{?with_tests:BuildRequires:	boost-test >= 1.42}
-BuildRequires:	cmake >= 2.8.3
+BuildRequires:	boost-devel >= 1.53
+%{?with_tests:BuildRequires:	boost-test >= 1.53}
+BuildRequires:	cmake >= 2.8.6
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	libsigrok-c++-devel >= 0.4.0
 BuildRequires:	libsigrok-devel >= 0.4.0
 BuildRequires:	libsigrokdecode-devel >= 0.4.0
+BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	pkgconfig
+%if %{with qt4}
+BuildRequires:	QtCore-devel >= 4
+BuildRequires:	QtGui-devel >= 4
+BuildRequires:	QtSvg-devel >= 4
+BuildRequires:	qt4-build >= 4
 BuildRequires:	qt4-qmake >= 4
+%else
+BuildRequires:	Qt5Core-devel >= 5
+BuildRequires:	Qt5Gui-devel >= 5
+BuildRequires:	Qt5Svg-devel >= 5
+BuildRequires:	Qt5Widgets-devel >= 5
+BuildRequires:	qt5-build >= 5
+BuildRequires:	qt5-qmake >= 5
 Requires:	Qt5Gui-platform-xcb
+%endif
 Requires:	libsigrok >= 0.4.0
 Requires:	libsigrok-c++-devel >= 0.4.0
 Requires:	libsigrokdecode >= 0.4.0
@@ -44,7 +57,8 @@ install -d build
 cd build
 %cmake .. \
 	-DDISABLE_WERROR=ON \
-	%{?with_tests:-DENABLE_TESTS=ON}
+	%{?with_tests:-DENABLE_TESTS=ON} \
+	%{?with_qt4:-DFORCE_QT4=ON}
 
 %{__make}
 
