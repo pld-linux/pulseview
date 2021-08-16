@@ -13,6 +13,7 @@ Group:		X11/Applications/Graphics
 Source0:	https://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
 # Source0-md5:	108a5f095f06a9485d31a0349ea38243
 Patch0:		%{name}-qt.patch
+Patch1:		glib2.68.patch
 URL:		https://sigrok.org/wiki/PulseView
 BuildRequires:	Qt5Core-devel >= 5.3
 BuildRequires:	Qt5Gui-devel >= 5.3
@@ -52,6 +53,7 @@ sigrok.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -d build
